@@ -1,0 +1,21 @@
+https://www.kaggle.com/jms7575/batch-effects-in-mice-protein-expression-data/notebook
+
+Batch Effects :
+Notes:
+
+	There's clearly a per-mouse effect. Some mice have systematically high/low protein levels. Suggests that normalizing by mouse id is warranted.
+	There's clearly a per-replicate effect. There is a large subset of proteins where the expression level decreases or increases as a function of the replicate number.
+	There's clearly a periodicity within the per-replicate effect. It looks like various protein curves follow a periodicity-3 pattern. We could call these triads a "replicate batch".
+	Something went systematically wrong for the last three replicates of mouse 3415. This kind of observation would suggest that there's also a mouse_id * replicate_batch_id effect.
+	Overall this brings serious questions to the utility of these replicates. The SOM analysis paper and the blurb at kaggle say that the replicates form independent measurements of 
+	the same protein response, but all of these observations make it clear that this is far from true. Without more information it's entirely unclear how to reduce the 15 replicates 
+	into a single measurement value. Our best hope is that the replicate effects are reproduced across all mice, and if we analyze replicates as separate experiments, we can recover 
+	some statistical power.
+
+Notes:
+
+	Every mouse repeats the same story that replicate_id is a dominant effect in the observed expression level.
+	The replicate effects are mostly consistent across mice; this would permit a treatment where we analyze each replicate as a separate experiment. However, while the majority of 
+	mice exhibit the period-3 pattern, some mice don't show this and others have a phase offset in the period-3 behavior (e.g. 3497).
+	While not as powerful as a full mixed-effects model, we might be able to proceed by considering each replicate as a separate experiment and requiring our putative 
+	correlations to be significant across a majority (or more) of the replicates.
