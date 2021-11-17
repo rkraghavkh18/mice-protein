@@ -33,6 +33,6 @@ The aim of this project is to identify a subset of proteins that is discriminant
 ## Objective
 Perform featrure selection process and develop a classification model. 
 ## Methods
-Decision Tree and Random Forest, Linear and quadratic Discriminant Analysis
+SVM, ANN and Principal Component analysis -  Mapper Algorithm.
 ## Inference
 Explore how the final predictor's (discriminant proteins) influence the $class$ of mice.
